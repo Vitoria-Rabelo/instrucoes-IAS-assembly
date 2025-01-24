@@ -1,0 +1,22 @@
+.org 0x000
+
+inicio:
+    LOAD M(a) ADD M(b)
+    STOR M(x) LOAD M(a)
+    SUB M(b) STOR M(y)
+
+.org 0x100
+a: 
+    .word 6
+    
+.org 0x101
+b: 
+    .word 2
+
+.org 0x110
+x:
+    .word 0
+
+.org 0x111
+y: 
+    .word 0
