@@ -1,0 +1,40 @@
+#Questao 2
+#Os endereçoes estão em:
+# A em 0x100
+# B em 0x101
+# X em 0x102 
+# C em 0x103
+# D em 0x104
+# Y em 0x105
+
+.org 0x000
+
+LOAD M(a) ADD M(b)
+STOR M(x) LOAD M(c)
+ADD M(d) STOR M(y) 
+LOAD M(x) SUB M(y)
+STOR M(a)
+
+.org 0x100
+a: 
+    .word 12
+
+.org 0x101
+b:
+    .word 8
+
+.org 0x102
+x: 
+    .word 0
+
+.org 0x103
+c: 
+    .word 5
+
+.org 0x104
+d: 
+    .word 1
+
+.org 0x105
+y:
+    .word 0
