@@ -1,0 +1,48 @@
+#Questao 3
+.org 0x000
+
+LOAD M(N1) MUL M(P1)
+LOAD MQ ADD M(N2)
+MUL M(P2) LOAD MQ
+ADD M(N3) MUL M(P3)
+LOAD MQ STOR M(SomaPonderada)
+LOAD M(P1) ADD M(P2)
+ADD M(P3) STOR M(SomaPesos)
+LOAD M(SomaPonderada) DIV M(SomaPesos)
+STOR M(MediaPonderada)
+
+.org 0x110
+N1:
+    .word 8
+
+.org 0x111
+P1:
+    .word 2
+    
+.org 0x112
+N2:
+    .word 9
+    
+.org 0x113
+P2:
+    .word 3
+
+.org 0x114
+N3:
+    .word 7
+    
+.org 0x115
+P3:
+    .word 1
+
+.org 0x116
+SomaPonderada:
+    .word 0
+
+.org 0x117
+SomaPesos:
+    .word 0
+    
+.org 0x100
+MediaPonderada:
+    .word 0
