@@ -1,0 +1,80 @@
+.org 0x000
+
+inicio:
+    LOAD M(zero)
+    STOR M(soma)
+    LOAD M(tamanho)
+    STOR M(contador)
+    LOAD M(endereco_vetor)
+    STOR M(ponteiro)
+
+loop:
+    LOAD M(contador)
+    JUMP+ M(continua, 0:19)
+    JUMP M(fim, 0:19)
+
+continua:
+    LOAD M(ponteiro)
+    STOR M(endereco_LOAD)
+    LOAD M(endereco_LOAD)
+    DIV M(dois)
+    MUL M(dois)
+    SUB M(endereco_LOAD)
+    JUMP+ M(proximo, 0:19)
+    JUMP M(soma_par, 0:19)
+
+soma_par:
+    LOAD M(endereco_LOAD)
+    ADD M(soma)
+    STOR M(soma)
+
+proximo:
+    LOAD M(ponteiro)
+    ADD M(um)
+    STOR M(ponteiro)
+    LOAD M(contador)
+    SUB M(um)
+    STOR M(contador)
+    JUMP M(loop, 0:19)
+
+fim:
+    LOAD M(soma)
+    STOR M(resultado)
+
+.org 0x100
+tamanho:
+    .word 4
+
+resultado:
+    .word 0
+
+ponteiro:
+    .word 0
+
+contador:
+    .word 0
+
+soma:
+    .word 0
+
+dois:
+    .word 2
+
+um:
+    .word 1
+
+zero:
+    .word 0
+
+endereco_vetor:
+    .word 0x102
+
+endereco_LOAD:
+    .word 0x107
+
+.org 0x102
+A:
+    .word 20
+    .word 21
+    .word 4
+    .word 2
