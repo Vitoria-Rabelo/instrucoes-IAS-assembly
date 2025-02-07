@@ -1,0 +1,52 @@
+#Questao 5
+#Posições de Memória
+#a: 0x100, b: 0x101, resultado: 0x102
+#contador: 0x103, um: 0x104, zero: 0x105
+#resultado_final: 0x106
+.org 0x000
+
+inicio:
+    LOAD M(zero)
+    STOR M(resultado)
+    LOAD M(b)
+    STOR M(contador)
+
+loop:
+    LOAD M(contador)
+    JUMP M(fim, 0:19)
+    JUMP M(continua, 0:19)
+
+continua:
+    LOAD M(a)
+    ADD M(resultado)
+    STOR M(resultado)
+    LOAD M(contador)
+    SUB M(um)
+    STOR M(contador)
+    JUMP M(loop, 0:19)
+
+fim:
+    LOAD M(resultado)
+    STOR M(resultado_final)
+
+.org 0x100
+a:
+    .word 12
+
+b:
+    .word 4
+
+resultado:
+    .word 0
+
+contador:
+    .word 0
+
+um:
+    .word 1
+
+zero:
+    .word 0
+
+resultado_final:
+    .word 0
